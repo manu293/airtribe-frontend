@@ -2,6 +2,7 @@
 import Head from 'next/head'
 
 // local imports
+import TaskBoardHeader from "../components/taskBoardHeader";
 import Header from "../components/header";
 import styles from "../styles/Home.module.css";
 
@@ -15,12 +16,18 @@ function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="mainSection">
+      <main className={styles.mainContainer}>
 
         <Header 
           hText="Task Board"
           hStyle="h2"
         />
+
+        <div className={styles.taskBoardContainer}>
+
+          <TaskBoardHeader />
+
+        </div>
       
       </main>
       

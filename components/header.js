@@ -17,6 +17,9 @@ function Header(props) {
         case "h3":
             headerPStyle = headerStyle.headerStyle3;
             break;
+        case "h4":
+            headerPStyle = headerStyle.headerStyle4;
+            break;
         default:
             headerPStyle = headerStyle.headerStyle3;
             break;

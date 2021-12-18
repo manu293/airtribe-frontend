@@ -1,0 +1,52 @@
+.taskBoardHeaderContainer {
+    display: flex;
+    width: 100%;
+    padding: 0 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.leftSection {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.rightSection {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.viewContainer {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.viewText {
+    padding-left: 0.75rem;
+    color: #ababa9;
+}
+
+.iconTextContainer {
+    display: flex;
+    align-items: center;
+    margin: 0 1rem;
+}
+
+.iconContainer {
+    display: flex;
+    align-items: center;
+    margin: 0 1rem;
+}
+
+.buttonContainer {
+    background-color: #299acf;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    outline: none;
+    font-size: 18px;
+    cursor: pointer;
+}
