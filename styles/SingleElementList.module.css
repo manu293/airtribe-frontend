@@ -32,6 +32,7 @@
 .singleElementCardContainer:hover 
 .singleElementCardRight {
     display: flex;
+    cursor: move;
 }
 
 .singleElementCardLeft {

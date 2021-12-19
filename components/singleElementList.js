@@ -10,14 +10,19 @@ import singleElementListStyle from "../styles/SingleElementList.module.css";
 
 
 function SingleElementList(props) {
-    const {sEle, handleAddElementToGroup, handleElementInputChange} = props;
+
+    const {sEle, handleAddElementToGroup, handleElementInputChange, handleElementDragAndDrop} = props;
 
     const renderDraggableElement = (statusEle, indexVal, groupId) => {
         return (
             <div
                 key={`${groupId}-${indexVal}`}
                 draggable={true}
+                id={sEle.id}
                 className={singleElementListStyle.singleElementCardContainer}
+                onDragStart={(e) => handleDragStart(e, statusEle, indexVal, groupId)}
+                // onDragOver={(e) => handleDragOver(e)}
+                // onDrop={(e) => handleDragDrop(e, statusEle, indexVal, groupId)}
             >
                 <div className={singleElementListStyle.singleElementCardLeft}>
                     <input
@@ -44,8 +49,40 @@ function SingleElementList(props) {
         )
     }
 
+    const handleDragStart = (e, statusEle, indexValue, id) => {
+        const fromElement = JSON.stringify({
+            id,
+            indexValue,
+            statusEle,
+        })
+        e.dataTransfer.setData("dragContenet", fromElement)
+    }
+
+    const handleDragOver = (e) => {
+        e.preventDefault();
+        return false;
+    }
+
+    const handleDragDrop = (e, statusEle, indexValue, id) => {
+        e.preventDefault();
+
+        const toElement = {
+            id,
+            indexValue,
+            statusEle
+        }
+        const fromElement = JSON.parse(e.dataTransfer.getData("dragContenet"));
+
+        handleElementDragAndDrop(fromElement, toElement);
+    }
+
     return (
-        <div className={singleElementListStyle.singleElementContainer}>
+        <div
+            className={singleElementListStyle.singleElementContainer}
+            // onDragStart={(e) => handleDragStart(e, statusEle, indexVal, groupId)}
+            onDragOver={(e) => handleDragOver(e)}
+            onDrop={(e) => handleDragDrop(e, "", 0, sEle.id)}
+        >
     
             {
                 (sEle.statusElements.length > 0) && (

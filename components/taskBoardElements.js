@@ -6,7 +6,7 @@ import SingleElementList from "./singleElementList";
 import taskBoardStatus from "../styles/TaskBoardStatus.module.css";
 
 function TaskBoardStatusContainer(props) {
-    const {statusElements, handleAddElementToGroup, handleElementInputChange} = props;
+    const {statusElements, handleAddElementToGroup, handleElementInputChange, handleElementDragAndDrop } = props;
 
     return (
         <div className={taskBoardStatus.taskBoardStatusContainer}>
@@ -16,9 +16,10 @@ function TaskBoardStatusContainer(props) {
                     return (
                         <SingleElementList
                             sEle={sEle}
-                            key={`taskBoardElement-${sEle.id}`}
+                            key={`taskBoardElement-${sEle.id}`}            
                             handleAddElementToGroup={handleAddElementToGroup}
                             handleElementInputChange={handleElementInputChange}
+                            handleElementDragAndDrop={handleElementDragAndDrop}
                         />
                     )
                 })

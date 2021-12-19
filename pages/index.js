@@ -153,6 +153,24 @@ function Home() {
 
   }
 
+  const handleElementDragAndDrop = (fromElement, toElement) => {
+    const clonedStatusElements = [...statusElements];
+
+    const fromElementIndex = clonedStatusElements.findIndex((cEle) => cEle.id === fromElement.id);
+    const toElementIndex = clonedStatusElements.findIndex((cEle) => cEle.id === toElement.id);
+
+    if (fromElementIndex !== -1) {
+      clonedStatusElements[fromElementIndex].statusElements.splice(fromElement.indexValue, 1);
+    }
+
+    if (toElementIndex !== -1) {
+      clonedStatusElements[toElementIndex].statusElements.splice(toElement.indexValue, 0, fromElement.statusEle);
+    }
+  
+    setStatusElements(clonedStatusElements);
+
+  }
+
   return (
     <div className={styles.homeContainer}>
 
@@ -188,6 +206,7 @@ function Home() {
               statusElements={statusElements}
               handleAddElementToGroup={handleAddElementToGroup}
               handleElementInputChange={handleElementInputChange}
+              handleElementDragAndDrop={handleElementDragAndDrop}
             />
           </div>
 
