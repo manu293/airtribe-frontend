@@ -1,0 +1,59 @@
+.singleElementContainer {
+    width: 300px;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.singleElementNewContainer {
+    display: flex;
+    margin: 0.5rem 0;
+    align-items: center;
+    cursor: pointer;
+    align-items: center;
+}
+
+.singleElementNewText {
+    color: #ababa9;
+    padding-left: 0.5rem;
+    margin: 0;
+}
+
+.singleElementCardContainer {
+    border: 1px solid #ababa9;
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    align-items: center;
+    display: flex;
+    margin: 0.5rem 0;
+}
+
+.singleElementCardContainer:hover 
+.singleElementCardRight {
+    display: flex;
+}
+
+.singleElementCardLeft {
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.singleElementCardRight {
+    width: 20%;
+    display: none;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+.singleElementInputField {
+    border: none;
+    outline: none;
+}
+
+.singleElementInputField:focus,
+.singleElementInputField:active {
+    border: none;
+    outline: none;
+}

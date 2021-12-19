@@ -5,6 +5,7 @@ import Head from 'next/head'
 // local imports
 
 // containers
+import TaskboardElementsContainer from "../containers/taskBoardElementsContainer";
 import TaskBoardStatusContainer from "../containers/taskBoardStatusContainer";
 
 // components
@@ -44,15 +45,21 @@ function Home() {
       ]
 
       setStatusList(initalStatus);
+      setStatusElements(initalStatusElements);
   
       localStorage.setItem("status", JSON.stringify(initalStatus))
       localStorage.setItem("statusElements", JSON.stringify(initalStatusElements))
 
     } else {
         const parsedStatusItem = JSON.parse(localStorage.getItem("status"));
+        const parsedStatusEle = JSON.parse(localStorage.getItem("statusElements"));
 
         if (parsedStatusItem !== null) {
-            setStatusList(parsedStatusItem);
+          setStatusList(parsedStatusItem);
+        }
+
+        if (parsedStatusEle !== null) {
+          setStatusElements(parsedStatusEle)
         }
     }
 
@@ -66,7 +73,7 @@ function Home() {
   
     setShowStatusInputField(false);
     setNewStatus("")
-  }, [statusList.length])
+  }, [statusList.length]);
 
   useEffect(() => {
   
@@ -105,7 +112,7 @@ function Home() {
         });
 
         sElements.push({
-          id: `status${cloneStausList.length + 1}`,
+          id: `status${cloneStausList.length}`,
           statusElements: [],
         })
 
@@ -121,6 +128,29 @@ function Home() {
 
   const handleUpdateInputField = (e) => {
       setNewStatus(e.target.value);
+  }
+
+  const handleAddElementToGroup = (groupId) => {
+    const clonedStatusEle = [...statusElements];
+    const statusEleIndex = clonedStatusEle.findIndex((cSList) => cSList.id === groupId);
+
+    if (statusEleIndex !== -1) {
+      clonedStatusEle[statusEleIndex].statusElements.push("");
+    }
+
+    setStatusElements(clonedStatusEle);
+  }
+
+  const handleElementInputChange = (groupId, elementIndex, elementValue) => {
+    const clonedStatusEle = [...statusElements];
+    const statusEleIndex = clonedStatusEle.findIndex((cSList) => cSList.id === groupId);
+
+    if (statusEleIndex !== -1) {
+      clonedStatusEle[statusEleIndex].statusElements[elementIndex] = elementValue
+    }
+
+    setStatusElements(clonedStatusEle);
+
   }
 
   return (
@@ -150,6 +180,13 @@ function Home() {
             toggleShowStatusInputField={toggleShowStatusInputField}
             newStatus={newStatus}
             showStausInputField={showStausInputField}
+            statusElements={statusElements}
+          />
+
+          <TaskboardElementsContainer
+            statusElements={statusElements}
+            handleAddElementToGroup={handleAddElementToGroup}
+            handleElementInputChange={handleElementInputChange}
           />
 
         </div>

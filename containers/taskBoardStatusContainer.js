@@ -1,5 +1,4 @@
 // imports
-import { useEffect, useState } from "react";
 
 // local imports
 import TaskBoardStatus from "../components/taskBoardStatus";

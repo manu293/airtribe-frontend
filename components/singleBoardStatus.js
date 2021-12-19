@@ -7,7 +7,16 @@ import {HiPlus} from "react-icons/hi";
 import singleBoardStatusStyle from "../styles/SingleBoardStatus.module.css";
 
 function SingleBoardStatus(props) {
-    const {sList} = props;
+    const {sList, statusElements} = props;
+
+    let statusCount = 0;
+
+    const filteredStatusElement = statusElements.filter((sEle) => sEle.id === sList.id);
+
+    if (filteredStatusElement.length > 0) {
+        statusCount = filteredStatusElement[0].statusElements.length;
+    }
+
 
     let backgroundColor;
 
@@ -51,38 +60,31 @@ function SingleBoardStatus(props) {
 
     return (
         <div className={singleBoardStatusStyle.singleBoardStatusContainer} >
-            <div className={singleBoardStatusStyle.leftSide}>
-                {
-                    (sList.id === "status1") &&
-                    (
-                        <GrStatusUnknown
+            <div className={singleBoardStatusStyle.singleBoardStausSubContainer}>
+                <div className={singleBoardStatusStyle.leftSide}>
+
+                    <span className={`${singleBoardStatusStyle.statusName} ${backgroundColor}`}>
+                        {sList.statusName}
+                    </span>
+
+                    <span className={singleBoardStatusStyle.statusCount}>{statusCount}</span>
+                </div>
+
+                <div className={singleBoardStatusStyle.rightSide}>
+                    <span className={singleBoardStatusStyle.iconConatiner}>
+                        <MdOutlineMoreHoriz 
                             size={20}
-                            color="393939"
+                            color="acadaa"
                         />
-                    )
-                }
+                    </span>
 
-                <span className={`${singleBoardStatusStyle.statusName} ${backgroundColor}`}>
-                    {sList.statusName}
-                </span>
-
-                <span className={singleBoardStatusStyle.statusCount}>0</span>
-            </div>
-
-            <div className={singleBoardStatusStyle.rightSide}>
-                <span className={singleBoardStatusStyle.iconConatiner}>
-                    <MdOutlineMoreHoriz 
-                        size={20}
-                        color="acadaa"
-                    />
-                </span>
-
-                <span className={singleBoardStatusStyle.iconConatiner}>
-                    <HiPlus 
-                        size={20}
-                        color="acadaa"
-                    />
-                </span>
+                    <span className={singleBoardStatusStyle.iconConatiner}>
+                        <HiPlus 
+                            size={20}
+                            color="acadaa"
+                        />
+                    </span>
+                </div>
             </div>
         </div>
     )

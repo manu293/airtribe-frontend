@@ -28,6 +28,8 @@
     align-items: center;
     cursor: pointer;
     color: #acadaa;
+    width: 150px;
+    justify-content: space-around;
 }
 
 .taskBoardInputContainer {
