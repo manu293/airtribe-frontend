@@ -1,0 +1,54 @@
+.taskBoardStatusContainer {
+    padding: 1rem;
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    align-items: center;
+}
+
+.addMoreConatinerContainer {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.iconConatiner {
+    display: flex;
+    align-items: center;
+    padding: 0 0.5rem;
+}
+
+.addMoreText {
+    color: #acadaa;
+    font-size: 14px;
+}
+
+.addMoreContainer {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #acadaa;
+}
+
+.taskBoardInputContainer {
+    display: flex;
+    align-items: center;
+}
+
+.taskBoardInputFieldIcons {
+    margin: 0 0.5rem;
+}
+
+.taskBoardInputField {
+    background-color: #f3f4f1;
+    color: #000;
+    border: 2px solid #9ecbdd;
+    border-radius: 3px;
+}
+
+.taskBoardInputField:active,
+.taskBoardInputField:hover,
+.taskBoardInputField:focus {
+    outline: none;
+    border: 2px solid #9ecbdd;
+}

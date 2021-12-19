@@ -2,11 +2,19 @@
 import Head from 'next/head'
 
 // local imports
+
+// containers
+import TaskBoardStatusContainer from "../containers/taskBoardStatusContainer";
+
+// components
 import TaskBoardHeader from "../components/taskBoardHeader";
+
+// css
 import Header from "../components/header";
 import styles from "../styles/Home.module.css";
 
 function Home() {
+
   return (
     <div className={styles.homeContainer}>
 
@@ -26,6 +34,8 @@ function Home() {
         <div className={styles.taskBoardContainer}>
 
           <TaskBoardHeader />
+
+          <TaskBoardStatusContainer />
 
         </div>
       

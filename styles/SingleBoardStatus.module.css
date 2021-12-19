@@ -1,0 +1,83 @@
+.singleBoardStatusContainer {
+    width: 300px;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.leftSide {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.rightSide {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.iconConatiner {
+    display: flex;
+    align-items: center;
+    padding: 0 0.5rem;
+}
+
+.statusName {
+    margin: 0 0.5rem;
+    padding: 0 0.5rem;
+}
+
+.statusCount {
+    color: #acadaa;
+    font-size: 20px;
+}
+
+.statusNameBackground1 {
+    border-radius: 5px;
+    background-color: #cfe2ff;
+    border-color: #cfe2ff;
+}
+
+.statusNameBackground2 {
+    border-radius: 5px;
+    background-color: #e2e3e5;
+    border-color: #e2e3e5;
+}
+
+.statusNameBackground3 {
+    border-radius: 5px;
+    background-color: #d1e7dd;
+    border-color: #d1e7dd;
+}
+
+.statusNameBackground4 {
+    border-radius: 5px;
+    background-color: #f8d7da;
+    border-color: #f8d7da;
+}
+
+.statusNameBackground5 {
+    border-radius: 5px;
+    background-color: #fff3cd;
+    border-color: #fff3cd;
+}
+
+.statusNameBackground6 {
+    border-radius: 5px;
+    background-color: #cff4fc;
+    border-color: #cff4fc;
+}
+
+.statusNameBackground7 {
+    border-radius: 5px;
+    background-color: #d3d3d4;
+    border-color: #d3d3d4;
+}
+
+.statusNameBackground0 {
+    border-radius: 5px;
+    background-color: #fff;
+    border-color: #fff;
+}
