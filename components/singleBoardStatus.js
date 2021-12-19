@@ -59,8 +59,7 @@ function SingleBoardStatus(props) {
     }
 
     return (
-        <div className={singleBoardStatusStyle.singleBoardStatusContainer} >
-            <div className={singleBoardStatusStyle.singleBoardStausSubContainer}>
+        <div className={singleBoardStatusStyle.singleBoardStausSubContainer}>
                 <div className={singleBoardStatusStyle.leftSide}>
 
                     <span className={`${singleBoardStatusStyle.statusName} ${backgroundColor}`}>
@@ -86,7 +85,6 @@ function SingleBoardStatus(props) {
                     </span>
                 </div>
             </div>
-        </div>
     )
 
 }

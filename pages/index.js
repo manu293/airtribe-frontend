@@ -173,21 +173,23 @@ function Home() {
 
           <TaskBoardHeader />
 
-          <TaskBoardStatusContainer 
-            handleAddMoreGroup={handleAddMoreGroup}
-            statusList={statusList}
-            handleUpdateInputField={handleUpdateInputField}
-            toggleShowStatusInputField={toggleShowStatusInputField}
-            newStatus={newStatus}
-            showStausInputField={showStausInputField}
-            statusElements={statusElements}
-          />
+          <div className={styles.taskboardElementsContainer}>
+            <TaskBoardStatusContainer 
+              handleAddMoreGroup={handleAddMoreGroup}
+              statusList={statusList}
+              handleUpdateInputField={handleUpdateInputField}
+              toggleShowStatusInputField={toggleShowStatusInputField}
+              newStatus={newStatus}
+              showStausInputField={showStausInputField}
+              statusElements={statusElements}
+            />
 
-          <TaskboardElementsContainer
-            statusElements={statusElements}
-            handleAddElementToGroup={handleAddElementToGroup}
-            handleElementInputChange={handleElementInputChange}
-          />
+            <TaskboardElementsContainer
+              statusElements={statusElements}
+              handleAddElementToGroup={handleAddElementToGroup}
+              handleElementInputChange={handleElementInputChange}
+            />
+          </div>
 
         </div>
       

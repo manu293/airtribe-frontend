@@ -10,3 +10,8 @@
 .taskBoardContainer {
   margin-top: 2rem;
 }
+
+.taskboardElementsContainer {
+  overflow-x: auto;
+  width: 100%;
+}
