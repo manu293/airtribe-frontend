@@ -119,6 +119,7 @@
   margin: 0;
   padding-left: 0.5rem;
   color: #cccccc;
+  width: 100%;
 }
 
 .taskBoardModalMaring {
@@ -128,6 +129,7 @@
 .taskBoardModalInput {
   border: none;
   outline: none;
+  width: 100%;
 }
 
 .taskBoardModalInput:active,
