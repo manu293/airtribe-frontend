@@ -1,10 +1,11 @@
 .homeContainer {
   display: flex;
-  margin: 6rem;
+  /* margin: 6rem; */
 }
 
 .mainContainer {
   width: 100%;
+  margin: 6rem
 }
 
 .taskBoardContainer {
@@ -15,4 +16,111 @@
   overflow-x: auto;
   width: 100%;
   display: grid;
+}
+
+.taskBoardModal {
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.taskBoardModalSection {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 5px;
+  width: 60%;
+  padding: 1rem;
+}
+
+.taskBoardModalHeader {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.taskBoardModalLeftHeader {
+  display: flex;
+  align-items: center;
+}
+
+.taskBoardModalRightHeader {
+  display: flex;
+  align-items: center;
+}
+
+.taskBoardModalLeftText {
+  color: #ababa9;
+  font-size: 16px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.taskBoardModalLeftTextMargin {
+  padding-left: 20px;
+}
+
+.taskBoardModalBody {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 4rem;
+}
+
+.taskBoardModalSection1 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.taskBoardModalSectionIconConatiner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.taskBoardModalSection2 {
+  margin: 0.5rem 0;
+}
+
+.taskBoardModalSectionHeader {
+  font-weight: bolder;
+  font-size: 24px;
+  margin: 0;
+}
+
+.taskBoardModalSection3 {
+  margin: 0.5rem 0;
+}
+
+.taskBoardModalSection4 {
+  margin: 0.5rem 0;
+  padding: 0.75rem 0;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.taskBoardModalText {
+  margin: 0;
+  padding-left: 0.5rem;
+  color: #cccccc;
+}
+
+.taskBoardModalMaring {
+  margin: 1rem 0;
 }

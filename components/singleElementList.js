@@ -11,9 +11,19 @@ import singleElementListStyle from "../styles/SingleElementList.module.css";
 
 function SingleElementList(props) {
 
-    const {sEle, handleAddElementToGroup, handleElementInputChange, handleElementDragAndDrop} = props;
+    const {sEle, handleAddElementToGroup, handleElementInputChange, 
+        handleElementDragAndDrop, handleSingleElementClick, statusList} = props;
 
     const renderDraggableElement = (statusEle, indexVal, groupId) => {
+
+        const filteredLoadsBoardStatus = statusList.filter((sList) => sList.id === groupId);
+
+        let statusName = "";
+
+        if (filteredLoadsBoardStatus.length > 0) {
+            statusName = filteredLoadsBoardStatus[0].statusName;
+        }
+
         return (
             <div
                 key={`${groupId}-${indexVal}`}
@@ -21,8 +31,7 @@ function SingleElementList(props) {
                 id={sEle.id}
                 className={singleElementListStyle.singleElementCardContainer}
                 onDragStart={(e) => handleDragStart(e, statusEle, indexVal, groupId)}
-                // onDragOver={(e) => handleDragOver(e)}
-                // onDrop={(e) => handleDragDrop(e, statusEle, indexVal, groupId)}
+                onDoubleClick={() => handleSingleElementClick(statusEle, statusName, indexVal, groupId)}
             >
                 <div className={singleElementListStyle.singleElementCardLeft}>
                     <input
@@ -79,7 +88,6 @@ function SingleElementList(props) {
     return (
         <div
             className={singleElementListStyle.singleElementContainer}
-            // onDragStart={(e) => handleDragStart(e, statusEle, indexVal, groupId)}
             onDragOver={(e) => handleDragOver(e)}
             onDrop={(e) => handleDragDrop(e, "", 0, sEle.id)}
         >
