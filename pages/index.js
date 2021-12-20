@@ -70,7 +70,7 @@ function Home() {
         }
     }
 
-  }, [])
+  }, []);
 
   useEffect(() => {
   
@@ -90,7 +90,7 @@ function Home() {
   
     setShowStatusInputField(false);
     setNewStatus("")
-  }, [statusElements])
+  }, [statusElements]);
 
   const handleAddMoreGroup = () => {
 
