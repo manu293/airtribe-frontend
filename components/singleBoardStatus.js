@@ -1,12 +1,12 @@
 // imports
-import {MdOutlineMoreHoriz} from "react-icons/md";
+import {MdDelete} from "react-icons/md";
 import {HiPlus} from "react-icons/hi";
 
 // local imports
 import singleBoardStatusStyle from "../styles/SingleBoardStatus.module.css";
 
 function SingleBoardStatus(props) {
-    const {sList, statusElements} = props;
+    const {sList, statusElements, handleDeleteStatus} = props;
 
     let statusCount = 0;
 
@@ -69,12 +69,20 @@ function SingleBoardStatus(props) {
                 </div>
 
                 <div className={singleBoardStatusStyle.rightSide}>
-                    <span className={singleBoardStatusStyle.iconConatiner}>
-                        <MdOutlineMoreHoriz 
-                            size={20}
-                            color="acadaa"
-                        />
-                    </span>
+                    {
+                        (sList.id !== "status1") &&
+                        (
+                            <span
+                                onClick={() => handleDeleteStatus(sList.id)}
+                                className={singleBoardStatusStyle.iconConatiner}
+                            >
+                                <MdDelete 
+                                    size={20}
+                                    color="acadaa"
+                                />
+                            </span>
+                        )
+                    }
 
                     <span className={singleBoardStatusStyle.iconConatiner}>
                         <HiPlus 

@@ -10,7 +10,7 @@ import taskBoardStatus from "../styles/TaskBoardStatus.module.css";
 
 function TaskBoardStatus(props) {
 
-    const {statusList, toggleShowStatusInputField, showStausInputField, 
+    const {statusList, toggleShowStatusInputField, showStausInputField, handleDeleteStatus,
         handleUpdateInputField, newStatus, handleAddMoreGroup, statusElements} = props;
 
     return (
@@ -21,6 +21,7 @@ function TaskBoardStatus(props) {
                     return (
                         <SingleBoardStatus
                             sList={sList}
+                            handleDeleteStatus={handleDeleteStatus}
                             statusElements={statusElements}
                             key={`sList-${sList.id}`}
                         />

@@ -226,6 +226,22 @@ function Home() {
     });
   }
 
+  const handleDeleteStatus = (groupId) => {
+    const clonedStatusElements = [...statusElements];
+    const clonedStausList = [...statusList];
+
+    const filteredStatusEle = clonedStatusElements.filter((cStatusEle) => cStatusEle.id !== groupId);
+    const filteredStatusList = clonedStausList.filter((cStatusList) => cStatusList.id !== groupId);
+
+    if (filteredStatusEle.length > 0) {
+      setStatusElements(filteredStatusEle);
+    }
+
+    if (filteredStatusList.length > 0) {
+      setStatusList(filteredStatusList)
+    }
+  }
+
   return (
     <div className={styles.homeContainer}>
 
@@ -255,6 +271,7 @@ function Home() {
               newStatus={newStatus}
               showStausInputField={showStausInputField}
               statusElements={statusElements}
+              handleDeleteStatus={handleDeleteStatus}
             />
 
             <TaskboardElementsContainer
