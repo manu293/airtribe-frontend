@@ -142,7 +142,10 @@ function Home() {
     const statusEleIndex = clonedStatusEle.findIndex((cSList) => cSList.id === groupId);
 
     if (statusEleIndex !== -1) {
-      clonedStatusEle[statusEleIndex].statusElements.push("");
+      clonedStatusEle[statusEleIndex].statusElements.push({
+        heading: "",
+        description: "",
+      });
     }
 
     setStatusElements(clonedStatusEle);
@@ -153,7 +156,7 @@ function Home() {
     const statusEleIndex = clonedStatusEle.findIndex((cSList) => cSList.id === groupId);
 
     if (statusEleIndex !== -1) {
-      clonedStatusEle[statusEleIndex].statusElements[elementIndex] = elementValue
+      clonedStatusEle[statusEleIndex].statusElements[elementIndex].heading = elementValue
     }
 
     setStatusElements(clonedStatusEle);
@@ -181,7 +184,6 @@ function Home() {
   const handleDeleteSinlgeElement = () => {
     
     const {elementIndex, id} = singleElement;
-    console.log("singleElement", singleElement)
     const clonedStatusElements = [...statusElements];
     const filteredGroupIndex = clonedStatusElements.findIndex((cEle) => cEle.id === id);
 
@@ -203,6 +205,17 @@ function Home() {
       elementIndex: indexVal,
       id,
     })
+  }
+
+  const handleUpdateTaskDescription = (groupId, indexVal, descriptionVal) => {
+    const clonedStatusEle = [...statusElements];
+    const statusEleIndex = clonedStatusEle.findIndex((cSList) => cSList.id === groupId);
+
+    if (statusEleIndex !== -1) {
+      clonedStatusEle[statusEleIndex].statusElements[indexVal].description = descriptionVal;
+    }
+
+    setStatusElements(clonedStatusEle);
   }
 
   const handleCloseModal = () => {
@@ -268,6 +281,7 @@ function Home() {
             statusElements={statusElements}
             statusList={statusList}
             handleElementDragAndDrop={handleElementDragAndDrop}
+            handleUpdateTaskDescription={handleUpdateTaskDescription}
           />
         )
       }

@@ -13,7 +13,7 @@ import styles from "../styles/Home.module.css";
 
 function TaskBoardModal(props) {
 
-    const {handleDeleteSinlgeElement, handleCloseModal, statusElements, 
+    const {handleDeleteSinlgeElement, handleCloseModal, statusElements, handleUpdateTaskDescription,
         singleElement, handleElementInputChange, statusList,handleElementDragAndDrop} = props;
 
     const selectStausOptions = statusList.map((sList) => ({
@@ -21,12 +21,12 @@ function TaskBoardModal(props) {
         label: sList.statusName,
     }));
 
-    let headerTitle = singleElement.statusEle;
+    let statusSection = singleElement.statusEle;
 
     const filteredStatusElement = statusElements.findIndex((sEle) => sEle.id === singleElement.id);
 
     if (filteredStatusElement > -1) {
-        headerTitle = statusElements[filteredStatusElement].statusElements[singleElement.elementIndex];
+        statusSection = statusElements[filteredStatusElement].statusElements[singleElement.elementIndex];
     }
 
     const handleSelectChange = (val) => {
@@ -73,8 +73,8 @@ function TaskBoardModal(props) {
                         onClick={() => handleCloseModal()}
                     >
                         <RiCloseLine 
-                        size={20}
-                        color="#ababa9"
+                            size={20}
+                            color="#ababa9"
                         />
                     </span>
                     
@@ -109,7 +109,7 @@ function TaskBoardModal(props) {
                             className={`${styles.taskBoardModalInput} ${styles.taskBoardModalHeaderInput}`}
                             type="text"
                             placeholder="Add a component"
-                            value={headerTitle}
+                            value={statusSection.heading}
                             onChange={(e) => handleElementInputChange(singleElement.id, singleElement.elementIndex, e.target.value)}
                         />
                     </p>
@@ -164,7 +164,9 @@ function TaskBoardModal(props) {
                         <input
                             className={styles.taskBoardModalInput}
                             type="text"
-                            placeholder="Add a component"
+                            placeholder="Add a description or commnet"
+                            value={statusSection.description}
+                            onChange={(e) => handleUpdateTaskDescription(singleElement.id, singleElement.elementIndex, e.target.value)}
                         />
                     </p>
                     </div>

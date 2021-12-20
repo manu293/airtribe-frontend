@@ -39,7 +39,7 @@ function SingleElementList(props) {
                         type="text"
                         placeholder="Type A Name"
                         onChange={(e) => handleElementInputChange(groupId, indexVal, e.target.value)}
-                        value={statusEle}
+                        value={statusEle.heading}
                     />
                 </div>
 
