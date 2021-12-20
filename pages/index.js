@@ -264,6 +264,10 @@ function Home() {
             handleDeleteSinlgeElement={handleDeleteSinlgeElement}
             handleCloseModal={handleCloseModal}
             singleElement={singleElement}
+            handleElementInputChange={handleElementInputChange}
+            statusElements={statusElements}
+            statusList={statusList}
+            handleElementDragAndDrop={handleElementDragAndDrop}
           />
         )
       }

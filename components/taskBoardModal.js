@@ -1,4 +1,7 @@
 // imports
+import Select from 'react-select';
+
+// icons
 import {IoIosExpand} from "react-icons/io";
 import {BsPlusCircle, BsTriangleFill} from "react-icons/bs";
 import {BiSquare} from "react-icons/bi";
@@ -10,7 +13,38 @@ import styles from "../styles/Home.module.css";
 
 function TaskBoardModal(props) {
 
-    const {handleDeleteSinlgeElement, handleCloseModal, singleElement} = props;
+    const {handleDeleteSinlgeElement, handleCloseModal, statusElements, 
+        singleElement, handleElementInputChange, statusList,handleElementDragAndDrop} = props;
+
+    const selectStausOptions = statusList.map((sList) => ({
+        value: sList.id,
+        label: sList.statusName,
+    }));
+
+    let headerTitle = singleElement.statusEle;
+
+    const filteredStatusElement = statusElements.findIndex((sEle) => sEle.id === singleElement.id);
+
+    if (filteredStatusElement > -1) {
+        headerTitle = statusElements[filteredStatusElement].statusElements[singleElement.elementIndex];
+    }
+
+    const handleSelectChange = (val) => {
+        const toElement = {
+            id: singleElement.id,
+            indexValue: singleElement.elementIndex,
+            statusEle: singleElement.statusEle,
+        };
+
+        const fromElement = {
+            id: val.value,
+            indexValue: 0,
+            statusEle: "",
+        }
+
+        handleElementDragAndDrop(toElement, fromElement);
+        handleCloseModal()
+    }
 
     return (
         <div className={styles.taskBoardModal}>
@@ -70,7 +104,15 @@ function TaskBoardModal(props) {
                     </div>
         
                     <div className={styles.taskBoardModalSection2}>
-                    <p className={styles.taskBoardModalSectionHeader}>{singleElement.statusEle}</p>
+                    <p className={styles.taskBoardModalSectionHeader}>
+                        <input
+                            className={`${styles.taskBoardModalInput} ${styles.taskBoardModalHeaderInput}`}
+                            type="text"
+                            placeholder="Add a component"
+                            value={headerTitle}
+                            onChange={(e) => handleElementInputChange(singleElement.id, singleElement.elementIndex, e.target.value)}
+                        />
+                    </p>
                     </div>
         
                     <div className={styles.taskBoardModalSection3}>
@@ -82,7 +124,12 @@ function TaskBoardModal(props) {
                         />
                         <span className={styles.taskBoardModalLeftText}>Status</span>
                         <span className={`${styles.taskBoardModalLeftText} ${styles.taskBoardModalLeftTextMargin}`}>
-                        {singleElement.groupId}
+                            <Select
+                                closeMenuOnSelect={true}
+                                value={{value:singleElement.id, label: singleElement.groupId}}
+                                options={selectStausOptions}
+                                onChange={(val) => handleSelectChange(val)}
+                            />
                         </span>
                     </div>
         
@@ -93,7 +140,7 @@ function TaskBoardModal(props) {
                         />
                         <span className={styles.taskBoardModalLeftText}>Assign</span>
                         <span className={`${styles.taskBoardModalLeftText} ${styles.taskBoardModalLeftTextMargin}`}>
-                        Unassigned
+                            Unassigned
                         </span>
                     </div>
         
@@ -113,7 +160,13 @@ function TaskBoardModal(props) {
                         color="#ababa9"
                     />
         
-                    <p className={styles.taskBoardModalText}>Add a component</p>
+                    <p className={styles.taskBoardModalText}>
+                        <input
+                            className={styles.taskBoardModalInput}
+                            type="text"
+                            placeholder="Add a component"
+                        />
+                    </p>
                     </div>
         
                     <p>Please ENTER to continue with Empty Page.</p>

@@ -124,3 +124,19 @@
 .taskBoardModalMaring {
   margin: 1rem 0;
 }
+
+.taskBoardModalInput {
+  border: none;
+  outline: none;
+}
+
+.taskBoardModalInput:active,
+.taskBoardModalInput:focus {
+  border: none;
+  outline: none;
+}
+
+.taskBoardModalHeaderInput {
+    font-weight: bolder;
+    font-size: 24px;
+}
