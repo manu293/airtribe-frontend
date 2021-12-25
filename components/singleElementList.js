@@ -89,7 +89,7 @@ function SingleElementList(props) {
         <div
             className={singleElementListStyle.singleElementContainer}
             onDragOver={(e) => handleDragOver(e)}
-            onDrop={(e) => handleDragDrop(e, "", 0, sEle.id)}
+            onDrop={(e) => handleDragDrop(e, "", 2, sEle.id)}
         >
     
             {

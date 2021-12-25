@@ -6,7 +6,7 @@ import {HiPlus} from "react-icons/hi";
 import singleBoardStatusStyle from "../styles/SingleBoardStatus.module.css";
 
 function SingleBoardStatus(props) {
-    const {sList, statusElements, handleDeleteStatus} = props;
+    const {sList, statusElements, handleDeleteStatus, sListIndex, handleStatusDragAndDrop} = props;
 
     let statusCount = 0;
 
@@ -57,8 +57,37 @@ function SingleBoardStatus(props) {
             break;
     }
 
+    const handleStatusDragStart = (e, sList, sListIndex) => {
+        const fromStatus = JSON.stringify({
+            ...sList,
+            sListIndex
+        });
+
+        e.dataTransfer.setData("dragContenet", fromStatus);
+    }
+
+    const handleStatusDragOver = (e) => {
+        e.preventDefault();
+        return false;
+    }
+
+    const handleStatusDragDrop = (e, sList, sListIndex) => {
+        const toStatus = {
+            ...sList,
+            sListIndex
+        }
+        const fromStatus = JSON.parse(e.dataTransfer.getData("dragContenet"));
+        handleStatusDragAndDrop(fromStatus, toStatus);
+    }
+
     return (
-        <div className={singleBoardStatusStyle.singleBoardStausSubContainer}>
+        <div
+            draggable={true}
+            onDragStart={(e) => handleStatusDragStart(e, sList, sListIndex)}
+            onDragOver={(e) => handleStatusDragOver(e)}
+            onDrop={(e) => handleStatusDragDrop(e, sList, sListIndex)}
+            className={singleBoardStatusStyle.singleBoardStausSubContainer}
+        >
                 <div className={singleBoardStatusStyle.leftSide}>
 
                     <span className={`${singleBoardStatusStyle.statusName} ${backgroundColor}`}>
@@ -70,7 +99,7 @@ function SingleBoardStatus(props) {
 
                 <div className={singleBoardStatusStyle.rightSide}>
                     {
-                        (sList.id !== "status1") &&
+                        (sList.statusName !== "No Status") &&
                         (
                             <span
                                 onClick={() => handleDeleteStatus(sList.id)}

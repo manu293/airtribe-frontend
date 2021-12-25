@@ -36,9 +36,11 @@ function Home() {
       (localStorage.getItem("status") === null)
     )  {
 
+      const randomId = Math.random().toString(16).slice(2);
+
       const initalStatus = [
         {
-          id: "status1",
+          id: randomId,
           statusName: "No Status",
           statusColor: "#fff",
         }
@@ -46,7 +48,7 @@ function Home() {
 
       const initalStatusElements = [
           {
-              id: "status1",
+              id: randomId,
               statusElements: [],
           }
       ]
@@ -80,7 +82,7 @@ function Home() {
   
     setShowStatusInputField(false);
     setNewStatus("")
-  }, [statusList.length]);
+  }, [statusList]);
 
   useEffect(() => {
   
@@ -112,14 +114,16 @@ function Home() {
 
         const cloneStausList = [...statusList];
 
+        const randomId = Math.random().toString(16).slice(2);
+
         cloneStausList.push({
-            id: `status${cloneStausList.length + 1}`,
+            id: randomId,
             statusName: newStatus,
             statusColor: colorList[randomValue],
         });
 
         sElements.push({
-          id: `status${cloneStausList.length}`,
+          id: randomId,
           statusElements: [],
         })
 
@@ -178,6 +182,23 @@ function Home() {
     }
   
     setStatusElements(clonedStatusElements);
+
+  }
+
+  const handleStatusDragAndDrop = (fromElement, toElement) => {
+    const clonedStatus = [...statusList];
+    const clondedElements = [...statusElements];
+  
+    clonedStatus.splice(fromElement.sListIndex, 1);
+    clonedStatus.splice(toElement.sListIndex, 0, fromElement);
+
+    const interElement = clondedElements[fromElement.sListIndex];
+
+    clondedElements.splice(fromElement.sListIndex, 1);
+    clondedElements.splice(toElement.sListIndex, 0, interElement);
+
+    setStatusList(clonedStatus);
+    setStatusElements(clondedElements);
 
   }
 
@@ -272,6 +293,7 @@ function Home() {
               showStausInputField={showStausInputField}
               statusElements={statusElements}
               handleDeleteStatus={handleDeleteStatus}
+              handleStatusDragAndDrop={handleStatusDragAndDrop}
             />
 
             <TaskboardElementsContainer

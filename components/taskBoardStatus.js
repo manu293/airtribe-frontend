@@ -11,18 +11,20 @@ import taskBoardStatus from "../styles/TaskBoardStatus.module.css";
 function TaskBoardStatus(props) {
 
     const {statusList, toggleShowStatusInputField, showStausInputField, handleDeleteStatus,
-        handleUpdateInputField, newStatus, handleAddMoreGroup, statusElements} = props;
+        handleUpdateInputField, newStatus, handleAddMoreGroup, statusElements, handleStatusDragAndDrop} = props;
 
     return (
         <div className={taskBoardStatus.taskBoardStatusContainer}>
             
             {
-                statusList.map((sList) => {
+                statusList.map((sList, index) => {
                     return (
                         <SingleBoardStatus
+                            sListIndex={index}
                             sList={sList}
                             handleDeleteStatus={handleDeleteStatus}
                             statusElements={statusElements}
+                            handleStatusDragAndDrop={handleStatusDragAndDrop}
                             key={`sList-${sList.id}`}
                         />
                     )
